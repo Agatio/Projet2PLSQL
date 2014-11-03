@@ -54,11 +54,18 @@ class UserManager extends BaseManager
     public function get($info)
     {
         if (is_string($info)) {
-            $q = $this->_db->prepare('SELECT user_id, username, passws FROM users WHERE username = :l');
+
+            /*$q = $this->_db->prepare('SELECT user_id, username, passws FROM users WHERE username = :l');
             $q->bindValue(':l', $info, PDO::PARAM_STR);
             $q->execute();
-            $data = $q->fetch(PDO::FETCH_ASSOC);
-            return new User($data);
+            $data = $q->fetch(PDO::FETCH_ASSOC);*/
+
+            $stid = oci_parse($this->_db, 'SELECT user_id, username, passwd FROM users WHERE username = :l');
+            oci_bind_by_name($stid, ':l', $info);
+            oci_execute($stid);
+            //return (bool) oci_fetch($stid);
+
+            return new User(oci_fetch($stid));
         } else {
             $id = (int) $info;
             $q = $this->_db->prepare('SELECT user_id, username, passwd FROM users WHERE user_id = :id');
