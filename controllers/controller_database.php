@@ -28,6 +28,12 @@ class Controller_Database extends Controller
 		include 'views/listDatabases.php';
 	}
 
+	public function show()
+	{
+		$database = $this->databm->get($_GET['dbid']);
+		include 'views/showDatabase.php';
+	}
+
 	public function add()
 	{
 		$t = new Trajet(array(
