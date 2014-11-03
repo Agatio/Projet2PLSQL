@@ -1,9 +1,9 @@
 <?php
 
 require_once 'models/baseManager.php';
-require_once 'models/trajet.php';
+require_once 'models/database.php';
 
-class TrajetManager extends BaseManager
+class DatabaseManager extends BaseManager
 {
     public function __construct($db) {
         parent::__construct($db);
@@ -49,12 +49,54 @@ class TrajetManager extends BaseManager
     
     public function getList()
     {
-        $trajets = array();
-        $q = $this->_db->query('SELECT id, liaison, train, heureDepart FROM trajets');
+        echo "coucou";
+        $databases = array();
+        /*$q = $this->_db->query('SELECT db_id, db_name, db_domain, host, port, user_id FROM databases WHERE user_id = :uid');
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $trajets[] = new Trajet($data);
-        }
-        return $trajets;
+        }*/
+
+            $datab = oci_parse($this->_db, 'SELECT * FROM databases WHERE USER_ID = :userid');
+
+            echo "<br/>session user_id : " . $_SESSION['user_id'] . "<br/>";
+
+            oci_bind_by_name($datab, ':userid', $_SESSION['user_id']);
+            oci_execute($datab);
+            //$raw = oci_fetch_all($datab,$res);
+            //echo "row : " . $raw[1]."<br/>";
+            //var_dump($res);
+            //echo '<br/> test';
+
+            while(($row = oci_fetch_row($datab)) != false)
+            {
+                echo 'salur fdp';
+                //var_dump($res);
+                echo '<br/>';
+                var_dump($row);
+
+                echo $row[0];
+                echo $row[1];
+                echo $row[2];
+                //$databases[] = new Database($row[0],$row[1],$row[2],$row[3],$row[4],$row[5]);
+                array_push($databases, new Database($row[0],$row[1],$row[2],$row[3],$row[4],$row[5]));
+            }
+
+/*echo 'début <br/>';
+
+$st_handle = oci_parse($this->_db, 'SELECT * FROM databases WHERE USER_ID=0');
+oci_execute($st_handle);
+
+$nrows = oci_fetch_all($st_handle, $res);
+echo "$nrows rows fetched<br/>";
+var_dump($res);
+
+echo '<br/>fin<br/>';*/
+
+
+
+
+
+        return $databases;
     }
     
     public function update(Trajet $t)

@@ -2,25 +2,16 @@
 
 require_once 'controllers/controller.php';
 
-require_once 'models/trajetManager.php';
-require_once 'models/trainManager.php';
-require_once 'models/liaisonManager.php';
-require_once 'models/villeManager.php';
+require_once 'models/databaseManager.php';
 
-class Controller_Trajet extends Controller
+class Controller_Database extends Controller
 {
-	private $trajm;
-	private $trainm;
-	private $lm;
-	private $vm;
+	private $databm;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->trajm = new TrajetManager($this->db);
-		$this->trainm = new TrainManager($this->db);
-		$this->lm = new LiaisonManager($this->db);
-		$this->vm = new VilleManager($this->db);
+		$this->databm = new DatabaseManager($this->db);
 	}
 
 	public function edit()
@@ -29,6 +20,12 @@ class Controller_Trajet extends Controller
 		$trains = $this->trainm->getList();
 		$liaisons = $this->lm->getList();
 		include 'views/editTrajets.php';
+	}
+
+	public function databaselist()
+	{
+		$databases = $this->databm->getList();
+		include 'views/listDatabases.php';
 	}
 
 	public function add()

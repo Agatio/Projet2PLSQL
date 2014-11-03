@@ -62,24 +62,20 @@ class Controller_User extends Controller
 		{
 			if ($this->um->exists($_POST['username']))
 			{
-				echo "jexiste<br/>";
 				$u = $this->um->get($_POST['username']);
 				if ($u->passwd() == $_POST['passwd'])
 				{
-					echo "je suis co<br/>";
 					$_SESSION['user_id'] = $u->user_id();
 					$_SESSION['username'] = $u->username();
 					//header('Location: index.php');
 					//exit();
 				} else
 				{
-					echo "tu sais pas taper ton mdp fdp<br/>";
 					//$_SESSION['message'] = 'Mot de passe incorrect';
 					//header('Location: index.php?section=user&action=connect');
 				}
 			} else
 			{
-				echo "jexiste pas ici putain de mongole";
 				$_SESSION['message'] = 'L\'utilisateur '.$_POST['username'].' n\'existe pas';
 				header('Location: index.php?section=user&action=connect');
 			}
