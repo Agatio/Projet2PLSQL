@@ -62,19 +62,18 @@ class Controller_User extends Controller
 		{
 			if ($this->um->exists($_POST['username']))
 			{
-				echo "jexiste";
+				echo "jexiste<br/>";
 				$u = $this->um->get($_POST['username']);
-				if ($u->password() == $_POST['passwd'])
+				if ($u->passwd() == $_POST['passwd'])
 				{
-					echo "je suis co";
-					/*$_SESSION['userid'] = $u->id();
-					$_SESSION['username'] = $u->login();
-					$_SESSION['message'] = 'L\'utilisateur '.$_POST['username']. ' a été connecté';
-					header('Location: index.php');
-					exit();*/
+					echo "je suis co<br/>";
+					$_SESSION['user_id'] = $u->user_id();
+					$_SESSION['username'] = $u->username();
+					//header('Location: index.php');
+					//exit();
 				} else
 				{
-					echo "tu sais pas taper ton mdp fdp";
+					echo "tu sais pas taper ton mdp fdp<br/>";
 					//$_SESSION['message'] = 'Mot de passe incorrect';
 					//header('Location: index.php?section=user&action=connect');
 				}
@@ -89,10 +88,9 @@ class Controller_User extends Controller
 
 	public function disconnect()
 	{
-		if (isset($_SESSION['userid']) && isset($_SESSION['userlogin'])) {
-			$_SESSION['message'] = 'L\'utilisateur '.$_POST['login'].' a été déconnecté';
-			unset($_SESSION['userid']);
-			unset($_SESSION['userlogin']);
+		if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+			unset($_SESSION['user_id']);
+			unset($_SESSION['username']);
 			header('Location: index.php');
 		}
 	}

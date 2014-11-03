@@ -8,38 +8,44 @@ class User extends BaseModel
     private $_username;
     private $_passwd;
 
-    public function __construct(array $data) {
+    /*public function __construct(array $data) {
         parent::__construct($data);
+    }*/
+	
+	public function __construct($uid, $uname, $upass) {
+		$this->_user_id = $uid;
+		$this->_username = $uname;
+		$this->_passwd = $upass;
     }
 
-	public function setId($id) {
+	public function setUser_id($id) {
 		$id = (int) $id;
 		if ($id > 0) {
 			$this->_user_id = $id;
 		}
 	}
 
-    public function setLogin($l) {
+    public function setUsername($l) {
         if(is_string($l)) {
             $this->_username = $l;
         }
     }
 
-    public function setPassword($p) {
+    public function setPasswd($p) {
         if(is_string($p)) {
             $this->_passwd = $p;
         }
     }
 
-    public function id() {
+    public function user_id() {
     	return $this->_user_id;
     }
 
-    public function login() {
+    public function username() {
         return $this->_username;
     }
 
-    public function password() {
+    public function passwd() {
         return $this->_passwd;
     }
 }

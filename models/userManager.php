@@ -64,8 +64,18 @@ class UserManager extends BaseManager
             oci_bind_by_name($stid, ':l', $info);
             oci_execute($stid);
             //return (bool) oci_fetch($stid);
-
-            return new User(oci_fetch($stid));
+			
+			$tabUser = array();
+			
+			while(($row = oci_fetch_array($stid)) != false)
+			{
+				$tabUser[0] = $row[0];
+				$tabUser[1] = $row[1];
+				$tabUser[2] = $row[2];
+			}			
+			
+			$u = new User($tabUser[0], $tabUser[1], $tabUser[2]);
+            return $u;
         } else {
             $id = (int) $info;
             $q = $this->_db->prepare('SELECT user_id, username, passwd FROM users WHERE user_id = :id');

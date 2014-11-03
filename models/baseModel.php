@@ -8,7 +8,7 @@ class BaseModel
 
 	public function hydrate(array $data) {
 		foreach($data as $key => $value) {
-			$method = 'set'.ucfirst($key);
+			$method = 'set'.ucfirst(strtolower($key));
 			if(method_exists($this, $method)) {
 				$this->$method($value);
 			}

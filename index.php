@@ -32,7 +32,15 @@ if (!empty($_GET['section'])) {
 	$notfound = true;
 }
 
-include 'views/connexion.php';
+if(isset($_SESSION['user_id']))
+{
+	include 'views/home_front.php';
+}
+else
+{
+	include 'views/connexion.php';
+}
+
 
 $content = ob_get_clean();
 
