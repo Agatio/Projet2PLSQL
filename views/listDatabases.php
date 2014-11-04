@@ -3,7 +3,7 @@
 <fieldset>
 <legend>Liste des bases de données :</legend>
 <form method="post">
-	<select name="database">
+	<select id="database">
 <?php
 foreach ($databases as $d) {
 	
@@ -34,7 +34,9 @@ function modifyButtonClicked(e) {
 }
 function deleteButtonClicked(e) {
 	var f = e.target.parentNode;
-	f.action = 'index.php?section=database&action=show';
+	var x = document.getElementById("database").selectedIndex;
+    var y = document.getElementById("database").options;
+	f.action = 'index.php?section=database&action=show&dbid=' + y[x].value;
 	f.submit();
 }
 </script>
