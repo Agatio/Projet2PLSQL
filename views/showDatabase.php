@@ -1,12 +1,12 @@
 <section>
 
 <fieldset>
-<legend>Liste des bases de données :</legend>
 <?php
 
-	echo '<p>Nom : '.$database->db_name().' </p>';
+	/*echo '<p>Nom : '.$database->db_name().' </p>';
 	echo '<p>Domaine : '.$database->db_domain().' </p>';
-	echo '<p>Hôte : '.$database->host().':'.$database->port().' </p>';
+	echo '<p>Hôte : '.$database->host().':'.$database->port().' </p>';*/
+	echo 'Connexion reussie';
 
 ?>
 </fieldset>

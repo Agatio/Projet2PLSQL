@@ -31,6 +31,28 @@ class Controller_Database extends Controller
 	public function show()
 	{
 		$database = $this->databm->get($_GET['dbid']);
+		$desc = "(DESCRIPTION =
+	    (ADDRESS_LIST =
+	      (ADDRESS = (PROTOCOL = TCP)(Host = ".$database->host().")(Port = ".$database->port()."))
+	    )
+		  (CONNECT_DATA =
+		    (SERVER = DEDICATED)
+		    (SID = ".$_POST['SID'].")
+		  )
+		)";
+
+		$newDB = oci_connect($_POST['login'], $_POST['password'], $desc);
+
+		$tables = array();
+        $data = oci_parse($newDB, 'SELECT ALL_ALL_TABLES FROM dict');
+        oci_execute($data);
+        $i = 0;
+        while(($row = oci_fetch_row($data)) != false)
+        {
+            array_push($databases, $row[i]);
+            $i++;
+        }
+        var_dump($data);
 		include 'views/showDatabase.php';
 	}
 
