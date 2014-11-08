@@ -87,6 +87,11 @@ class Controller_User extends Controller
 		if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 			unset($_SESSION['user_id']);
 			unset($_SESSION['username']);
+			
+			unset($_SESSION['logDB']);
+			unset($_SESSION['logPw']);
+			unset($_SESSION['desc']);			
+			
 			header('Location: index.php');
 		}
 	}
