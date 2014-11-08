@@ -43,6 +43,7 @@ function deleteButtonClicked(e) {
 	var x = document.getElementById("database").selectedIndex;
     var y = document.getElementById("database").options;
 	f.action = 'index.php?section=database&action=show&dbid=' + y[x].value;
+	alert(y[x].value);
 	f.submit();
 }
 </script>

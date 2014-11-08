@@ -2,6 +2,10 @@
 
 <fieldset>
 <?php
+	for($n=0 ; $n<count($tables) ; $n++)
+	{
+		echo '<p>Nom : ' . $tables[$n][0] . '</p>';
+	}
 
 	/*echo '<p>Nom : '.$database->db_name().' </p>';
 	echo '<p>Domaine : '.$database->db_domain().' </p>';

@@ -49,6 +49,7 @@ class DatabaseManager extends BaseManager
         $datab = oci_parse($this->_db, 'SELECT * FROM databases WHERE DB_ID = :dbid');
         oci_bind_by_name($datab, ':dbid', $id);
         oci_execute($datab);
+
         while(($row = oci_fetch_row($datab)) != false)
         {
             return new Database($row[0],$row[1],$row[2],$row[3],$row[4],$row[5]);
