@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Accueil</title>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-	</head>
-	<body>
-		<fieldset>
+<h1>Application de gestion de bases de données</h1>
+		<fieldset id="co">
 			<legend>Connexion</legend>
 			<form method="POST" action="index.php?section=user&amp;action=connect">
 				<table>
@@ -22,5 +15,3 @@
 				<input type="submit">
 			</form>
 		</fieldset>
-	</body>
-</html>

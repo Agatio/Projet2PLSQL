@@ -1,6 +1,5 @@
-<section>
-	<p>Application de gestion de bases de données</p>
-	<a href="index.php?section=user&action=disconnect">déconnexion</a>
-	<a href="index.php?section=database&action=databaselist">liste des bases de données</a>
 
-</section>
+		<section>
+			<p class="lienDeb">&#10143;<a href="index.php?section=user&action=disconnect">Déconnexion</a></p><br/>
+			<p class="lienDeb">&#10143;<a href="index.php?section=database&action=databaselist">Liste des bases de données</a></p>
+		</section>

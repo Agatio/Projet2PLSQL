@@ -32,6 +32,15 @@ if (!empty($_GET['section'])) {
 	$notfound = true;
 }
 
+echo "<!DOCTYPE html>";
+echo "<html>";
+	echo "<head>";
+		echo "<meta charset='UTF-8'>";
+		echo "<title>Accueil</title>";
+		echo "<link rel='stylesheet' type='text/css' href='style/style.css'>";
+	echo "</head>";
+	echo "<body>";
+
 if(isset($_SESSION['user_id']))
 {
 	include 'views/home_front.php';
@@ -40,6 +49,8 @@ else
 {
 	include 'views/connexion.php';
 }
+
+	
 
 
 $content = ob_get_clean();
@@ -50,6 +61,8 @@ $content = ob_get_clean();
 echo $content;
 
 include 'views/footer_front.php';
+echo "</body>";
+echo "</html>";
 
 
 ?>

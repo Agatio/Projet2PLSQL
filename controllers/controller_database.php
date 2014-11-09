@@ -50,20 +50,18 @@ class Controller_Database extends Controller
 		$tables = array();
         //$data = oci_parse($newDB, 'SELECT ALL_ALL_TABLES FROM dict');
 		//$data = oci_parse($newDB, 'SELECT TABLE_NAME from ALL_ALL_TABLES');
-		$data = oci_parse($newDB, 'SELECT OBJECT_NAME, OBJECT_TYPE from ALL_OBJECTS ORDER BY OBJECT_TYPE');
+		$data = oci_parse($newDB, 'SELECT OBJECT_NAME, OBJECT_TYPE from USER_OBJECTS ORDER BY OBJECT_TYPE, OBJECT_NAME');
         oci_execute($data);
         $i = 0;
-		echo "tables avant : " . count($tables);
         while(($row = oci_fetch_row($data)) != false)
         {
             //array_push($databases, $row[$i]);
 			array_push($tables, $row);
             $i++;
         }
-		echo "tables après : " . count($tables);
 		
 		$typesObj = array();
-		$data2 = oci_parse($newDB, 'SELECT DISTINCT OBJECT_TYPE from ALL_OBJECTS');
+		$data2 = oci_parse($newDB, 'SELECT DISTINCT OBJECT_TYPE from USER_OBJECTS ORDER BY OBJECT_TYPE');
 		oci_execute($data2);
 		while(($row2 = oci_fetch_row($data2)) != false)
         {
@@ -147,6 +145,65 @@ class Controller_Database extends Controller
         }
 	
 		include 'views/showTableDetails.php';
+	}
+	
+	public function afficheInfoView()
+	{	
+		$newDB = oci_connect($_SESSION['logDB'], $_SESSION['logPw'], $_SESSION['desc']);
+		$data = oci_parse($newDB, 'SELECT * FROM ' . $_GET['viewName']);
+        oci_execute($data);
+		
+		$contView = array();
+		
+        while(($row = oci_fetch_row($data)) != false)
+        {
+			array_push($contView, $row);
+        }
+		
+		$data2 = oci_parse($newDB, "SELECT * FROM " . $_GET['viewName']);
+        oci_execute($data2);
+		
+		$nbCol = oci_num_fields($data2);
+		
+		$nomCol = array();
+		$typeCol = array();
+		$tailleCol = array();
+		$nomTable = $_GET['viewName'];
+		
+		for($i=1 ; $i<=$nbCol ; $i++)
+		{
+			array_push($nomCol, oci_field_name($data2, $i));
+			array_push($typeCol, oci_field_type($data2, $i));
+			array_push($tailleCol, oci_field_size($data2, $i));
+		}
+		
+		$nomTabUsed = array();
+		$data3 = oci_parse($newDB, "select referenced_name from user_dependencies where name = '" . $_GET['viewName'] . "' and type = 'VIEW' and referenced_type = 'TABLE'");
+        oci_execute($data3);
+		
+		while(($row = oci_fetch_row($data3)) != false)
+        {
+			array_push($nomTabUsed, $row);
+        }
+		
+		
+		include 'views/showViewDetails.php';
+	}
+	
+	public function afficheCodeObj()
+	{	
+		$newDB = oci_connect($_SESSION['logDB'], $_SESSION['logPw'], $_SESSION['desc']);
+		$data = oci_parse($newDB, "select text from USER_SOURCE where name = '" . $_GET['objName'] . "'");
+        oci_execute($data);
+		
+		$contObj = array();
+		
+        while(($row = oci_fetch_row($data)) != false)
+        {
+			array_push($contObj, $row);
+        }
+		
+		include 'views/showCodeDetails.php';
 	}
 }
 

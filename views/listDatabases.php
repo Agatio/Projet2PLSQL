@@ -1,6 +1,8 @@
+<h1>Application de gestion de bases de données</h1>
+
 <section>
 
-<fieldset>
+<fieldset id="coBDD">
 <legend>Liste des bases de données :</legend>
 <form method="post">
 	<select id="database">
@@ -28,7 +30,7 @@ foreach ($databases as $d) {
 		<input type="password" id="password" name="password"/>
 		<label>SID</label>
 		<input type="text" id="SID" name="SID"/>
-		<input type="button" value="Conexion" onclick="deleteButtonClicked(event)" />
+		<input type="button" value="Connexion" onclick="deleteButtonClicked(event)" />
 	</form>
 </fieldset>
 
@@ -43,7 +45,6 @@ function deleteButtonClicked(e) {
 	var x = document.getElementById("database").selectedIndex;
     var y = document.getElementById("database").options;
 	f.action = 'index.php?section=database&action=show&dbid=' + y[x].value;
-	alert(y[x].value);
 	f.submit();
 }
 </script>
