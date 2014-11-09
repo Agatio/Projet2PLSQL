@@ -30,7 +30,15 @@ class Controller_Database extends Controller
 
 	public function show()
 	{
-		$database = $this->databm->get($_GET['dbid']);
+		if(isset($_POST['login']) && isset($_POST['password']) && isset($_GET['dbid']) && isset($_POST['SID']))
+		{
+			$_SESSION['logDB'] = $_POST['login'];
+			$_SESSION['logPw'] = $_POST['password'];
+			$_SESSION['dbid'] = $_GET['dbid'];
+			$_SESSION['sid'] = $_POST['SID'];
+		}
+		
+		$database = $this->databm->get($_SESSION['dbid']);
 		
 		$desc = "(DESCRIPTION =
 	    (ADDRESS_LIST =
@@ -38,14 +46,14 @@ class Controller_Database extends Controller
 	    )
 		  (CONNECT_DATA =
 		    (SERVER = DEDICATED)
-		    (SID = ".$_POST['SID'].")
+		    (SID = ".$_SESSION['sid'].")
 		  )
 		)";
-
-		$newDB = oci_connect($_POST['login'], $_POST['password'], $desc);
-		$_SESSION['logDB'] = $_POST['login'];
-		$_SESSION['logPw'] = $_POST['password'];
 		$_SESSION['desc'] = $desc;
+		
+		
+		$newDB = oci_connect($_SESSION['logDB'], $_SESSION['logPw'], $desc);
+		
 
 		$tables = array();
         //$data = oci_parse($newDB, 'SELECT ALL_ALL_TABLES FROM dict');

@@ -90,7 +90,8 @@ class Controller_User extends Controller
 			
 			unset($_SESSION['logDB']);
 			unset($_SESSION['logPw']);
-			unset($_SESSION['desc']);			
+			unset($_SESSION['desc']);
+			unset($_SESSION['dbid']);		
 			
 			header('Location: index.php');
 		}

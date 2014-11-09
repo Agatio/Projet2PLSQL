@@ -1,4 +1,3 @@
-<h1>Application de gestion de bases de données</h1>
 <section>
 	<fieldset>
 		<?php

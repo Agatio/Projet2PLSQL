@@ -49,36 +49,10 @@ table {
 
 /* FIN DU RESET CSS */
 
-html, body
-{
-	height: 100%;
-}
-
 body
 {
 	background-color: #E2E2E2;
 	font-family: "Century Gothic";
-	box-sizing: border-box;
-	padding-top: 5px;
-}
-
-.contenu
-{
-	min-height:100%;
-}
-
-h1
-{
-	text-align: center;
-	font-size: 30px;
-	background-color: #FFFFFF;
-	border-style: solid;
-	border-color: black;
-	border-width: 1px;
-	border-radius: 10px;
-	margin: 0px auto 40px auto;
-	padding: 5px;
-	width: 900px;
 }
 
 fieldset#co
@@ -110,17 +84,59 @@ fieldset#co legend
 	border-color: black;
 }
 
-fieldset#co form
+form
 {
 	padding-top: 25px;
 }
 
-fieldset#co form table
+table
 {
 	margin-right: auto;
 	margin-left: auto;
 	border-spacing: 2px;
     border-collapse: separate;
+}
+
+.contenu
+{
+	background-color: pink;
+	height: 100%;
+}
+
+/* FOOTER */
+footer
+{
+	text-align: center;
+	width: 100%;
+	border-top-style: solid;
+	border-top-color: black;
+	border-top-width: 2px;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	padding: 10px;
+	
+	
+	position: relative;
+    clear:both;
+}
+
+h1
+{
+	text-align: center;
+	font-size: 30px;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 10px;
+	margin: 5px auto 40px auto;
+	padding: 5px;
+	width: 900px;
+}
+
+.lienDeb
+{
+	margin-left: 20px;
 }
 
 #coBDD
@@ -153,11 +169,6 @@ fieldset#coBDD legend
 	border-color: black;
 }
 
-fieldset#coBDD form
-{
-	padding-top: 20px;
-}
-
 #objTrouv
 {
 	border-style: solid;
@@ -166,20 +177,8 @@ fieldset#coBDD form
 	background-color: #A5A5A5;
 	border-radius: 3px;
 	width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 30px;
 	padding: 5px;
-	margin-bottom: 10px;
-}
-
-#objTrouv:first-child
-{
-	margin-top: 10px;
-}
-
-#objTrouv:last-child
-{
-	margin-bottom: 64px;
 }
 
 fieldset#objTrouv legend
@@ -193,34 +192,4 @@ fieldset#objTrouv legend
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-color: black;
-}
-
-footer
-{
-	text-align: center;
-	width: 100%;
-	border-top-style: solid;
-	border-top-color: black;
-	border-top-width: 2px;
-	box-sizing: border-box;
-	background-color: #FFFFFF;
-	padding: 10px;
-	height: 54px;
-	margin-top: -54px;
-}
-
-.results
-{
-	padding-bottom: 64px;
-}
-
-strong
-{
-	font-weight: bold;
-}
-
-td
-{
-	border: solid 1px black;
-	padding: 3px;
 }

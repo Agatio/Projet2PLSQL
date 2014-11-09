@@ -1,7 +1,5 @@
 <section>
 	<?php
-		echo $_GET['objName'];
-		
 		echo "<p><strong>Contenu : </strong></p>";
 		
 		for($z=0 ; $z<count($contObj) ; $z++)
@@ -11,5 +9,7 @@
 				echo "<p>" . $contObj[$z][$y] . "</p>";
 			}
 		}
+		
+		echo "<a href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a>"
 	?>
 </section>

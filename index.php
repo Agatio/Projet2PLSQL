@@ -32,6 +32,8 @@ if (!empty($_GET['section'])) {
 	$notfound = true;
 }
 
+$content = ob_get_clean();
+
 echo "<!DOCTYPE html>";
 echo "<html>";
 	echo "<head>";
@@ -40,31 +42,24 @@ echo "<html>";
 		echo "<link rel='stylesheet' type='text/css' href='style/style.css'>";
 	echo "</head>";
 	echo "<body>";
+		echo '<div class="contenu">';
+			echo '<h1>Application de gestion de bases de données</h1>';
 
-if(isset($_SESSION['user_id']))
-{
-	include 'views/home_front.php';
-}
-else
-{
-	include 'views/connexion.php';
-}
+			if(isset($_SESSION['user_id']))
+			{
+				include 'views/home_front.php';
+			}
+			else
+			{
+				include 'views/connexion.php';
+			}
 
-	
+			echo $content;
 
-
-$content = ob_get_clean();
-
-?>
-
-<?php
-echo $content;
-
-include 'views/footer_front.php';
-echo "</body>";
+		echo '</div>';
+		include 'views/footer_front.php';		
+	echo "</body>";
 echo "</html>";
-
-
 ?>
 
 </body>

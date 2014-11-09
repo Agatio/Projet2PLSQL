@@ -1,7 +1,5 @@
 <section> 
 	<?php
-		echo $_GET['viewName'];
-		
 		echo "<p><strong>Contenu : </strong></p>";
 		
 		echo "<table>";
@@ -42,5 +40,7 @@
 			
 		}
 		echo "FROM " . $nomTabUsed[0][0] . "</p>";
+		
+		echo "<a href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a>"
 	?>
 </section>
