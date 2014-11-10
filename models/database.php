@@ -10,18 +10,22 @@ class Database extends BaseModel
     private $_host;
     private $_port;
     private $_user_id;
+	private $_sgbd;
+	private $_sid;
 
     /*public function __construct(array $data) {
         parent::__construct($data);
     }*/
 
-    public function __construct($db_id,$db_name,$db_domain,$host,$port,$user_id) {
+    public function __construct($db_id,$db_name,$db_domain,$host,$port,$user_id,$sgbd,$sid) {
         $this->_db_id = $db_id;
         $this->_db_name = $db_name;
         $this->_db_domain = $db_domain;
         $this->_host = $host;
         $this->_port = $port;
         $this->_user_id = $user_id;
+		$this->_sgbd = $sgbd;
+		$this->_sid = $sid;
     }
 
 	public function setDb_id($id) {
@@ -50,6 +54,14 @@ class Database extends BaseModel
     public function setUser_id($userid) {
             $this->_user_id = $userid;   
     }
+	
+	public function setSgbd($sgbd) {
+            $this->_sgbd = $sgbd;   
+    }
+	
+	public function setSid($sid) {
+            $this->_sid = $sid;   
+    }
 
     public function db_id() {
     	return $this->_db_id;
@@ -73,6 +85,14 @@ class Database extends BaseModel
 
     public function user_id() {
         return $this->_user_id;
+    }
+	
+	public function sgbd() {
+        return $this->_sgbd;
+    }
+	
+	public function sid() {
+        return $this->_sid;
     }
 }
 

@@ -28,10 +28,10 @@
 			
 			echo "<br/><p><strong>Script : </strong></p><br/>";
 			
-			echo "<p>CREATE VIEW " . $_GET['viewName'] . " as SELECT ";
+			echo "<pre class='fondBlanc'>CREATE VIEW " . $_GET['viewName'] . " as SELECT ";
 			for($z=0; $z<$nbCol ; $z++)
 			{
-				if($nbCol == $nbCol-1)
+				if($z == $nbCol-1)
 				{
 					echo $nomCol[$z] . " ";
 				}
@@ -41,7 +41,7 @@
 				}
 				
 			}
-			echo "FROM " . $nomTabUsed[0][0] . ";</p>";
+			echo "FROM " . $nomTabUsed[0][0] . ";</pre>";
 		?>
 	</div>
 </section>

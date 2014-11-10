@@ -11,6 +11,6 @@
 				<td><input type="password" name="passwd"><br/></td>
 			</tr>
 		</table><br/>
-		<input type="submit">
+		<input type="submit" value="Envoyer">
 	</form>
 </fieldset>

@@ -15,14 +15,21 @@
 				echo "<tr>";
 					echo "<td>" . $nomCol[$z] . "</td>";
 					echo "<td>" . $typeCol[$z] . "</td>";
-					echo "<td>" . $tailleCol[$z] . "</td>";
+					if($tailleCol[$z] != null)
+					{
+						echo "<td>" . $tailleCol[$z] . "</td>";
+					}
+					else
+					{
+						echo "<td>" . $tailleColNum[$z] . "</td>";
+					}
 				echo "</tr>";
 			}
 			echo "</table>";
 			
 			echo "<br/><p><strong>Contenu : </strong></p><br/>";
 			
-			echo "<table class='tabD'>";
+			echo "<table class='tabDP'>";
 			echo "<tr>";
 			
 			for($z=0; $z<$nbCol ; $z++)
@@ -52,11 +59,25 @@
 			{
 				if($z == $nbCol-1)
 				{
-					$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . ")\n";
+					if($tailleCol[$z] != null)
+					{
+						$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . ")\n";
+					}
+					else
+					{
+						$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleColNum[$z] . ")\n";
+					}
 				}
 				else
 				{
-					$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . "),\n\t";
+					if($tailleCol[$z] != null)
+					{
+						$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . "),\n\t";
+					}
+					else
+					{
+						$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleColNum[$z] . "),\n\t";
+					}
 				}
 			};
 			

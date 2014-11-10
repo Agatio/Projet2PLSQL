@@ -15,8 +15,6 @@
 			<input type="text" id="login" name="login"/>
 			<label>Mot de passe</label>
 			<input type="password" id="password" name="password"/>
-			<label>SID</label>
-			<input type="text" id="SID" name="SID"/>
 			<input type="button" value="Connexion" onclick="deleteButtonClicked(event)" />
 		</form>
 	</fieldset>
