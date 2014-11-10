@@ -123,6 +123,12 @@ fieldset#co form table
     border-collapse: separate;
 }
 
+fieldset#co form table tr td
+{
+	border: none;
+	padding: 0px;
+}
+
 #coBDD
 {
 	border-style: solid;
@@ -212,6 +218,22 @@ footer
 .results
 {
 	padding-bottom: 64px;
+	margin-left: 10px;
+}
+
+.btnRet
+{
+	text-decoration: none;
+	border: solid 1px black;
+	background-color: #AFAFAF;
+	border-radius: 5px;
+	padding: 2px;
+	color: black;
+}
+
+.btnRet:hover
+{
+	background-color: #CFCFCF;
 }
 
 strong
@@ -223,4 +245,48 @@ td
 {
 	border: solid 1px black;
 	padding: 3px;
+}
+
+.lienDeb
+{
+	margin: auto;
+	text-align: center;
+	border: solid 1px black;
+	width: 600px;
+	padding: 2px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+}
+
+.lienDeb a
+{
+	margin-right: 15px;
+	text-decoration: none;
+}
+
+.lienDeb a:hover
+{
+	margin-right: 15px;
+	text-decoration: none;
+	color: #FF00E6;
+}
+
+.lienDeb a:last-child
+{
+	margin-right: 0px;
+}
+
+.tabDP
+{
+	background-color: #FFFFFF;
+}
+
+.tabDP tr:first-child
+{
+	background-color: #AFAFAF;
+}
+
+.tabD
+{
+	background-color: #FFFFFF;
 }

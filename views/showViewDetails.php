@@ -1,46 +1,47 @@
 <section> 
-	<?php
-		echo "<p><strong>Contenu : </strong></p>";
-		
-		echo "<table>";
-		echo "<tr>";
-		
-		for($z=0; $z<$nbCol ; $z++)
-		{
-			echo "<td>" . $nomCol[$z] . "</td>";
-		}
-		echo "</tr>";
-		
-		for($z=0; $z<count($contView) ; $z++)
-		{
+	<div class="results">
+		<?php
+			echo "<br/><a class='btnRet' href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a><br/><br/>";
+			echo "<p><strong>Contenu : </strong></p><br/>";
+			
+			echo "<table class='tabDP'>";
 			echo "<tr>";
-			for($y=0 ; $y<$nbCol ; $y++)
-			{
-				echo "<td>" . $contView[$z][$y] . "</td>";
-			}
 			
+			for($z=0; $z<$nbCol ; $z++)
+			{
+				echo "<td>" . $nomCol[$z] . "</td>";
+			}
 			echo "</tr>";
-		}
-		
-		echo "</table>";
-		
-		echo "<p><strong>Script : </strong></p>";
-		
-		echo "<p>CREATE VIEW " . $_GET['viewName'] . " as SELECT ";
-		for($z=0; $z<$nbCol ; $z++)
-		{
-			if($nbCol == $nbCol-1)
+			
+			for($z=0; $z<count($contView) ; $z++)
 			{
-				echo $nomCol[$z] . " ";
-			}
-			else
-			{
-				echo $nomCol[$z] . ", ";
+				echo "<tr>";
+				for($y=0 ; $y<$nbCol ; $y++)
+				{
+					echo "<td>" . $contView[$z][$y] . "</td>";
+				}
+				
+				echo "</tr>";
 			}
 			
-		}
-		echo "FROM " . $nomTabUsed[0][0] . "</p>";
-		
-		echo "<a href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a>"
-	?>
+			echo "</table>";
+			
+			echo "<br/><p><strong>Script : </strong></p><br/>";
+			
+			echo "<p>CREATE VIEW " . $_GET['viewName'] . " as SELECT ";
+			for($z=0; $z<$nbCol ; $z++)
+			{
+				if($nbCol == $nbCol-1)
+				{
+					echo $nomCol[$z] . " ";
+				}
+				else
+				{
+					echo $nomCol[$z] . ", ";
+				}
+				
+			}
+			echo "FROM " . $nomTabUsed[0][0] . ";</p>";
+		?>
+	</div>
 </section>

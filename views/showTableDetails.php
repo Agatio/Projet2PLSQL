@@ -1,9 +1,10 @@
 <section> 
 	<div class="results">
 		<?php
+			echo "<br/><a class='btnRet' href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a><br/><br/>";
 			echo "<p><strong>Structure : </strong></p><br/>";
 			
-			echo "<table>";
+			echo "<table class='tabDP'>";
 			echo "<tr>";
 				echo "<td>Nom colonne</td>";
 				echo "<td>Type</td>";
@@ -21,7 +22,7 @@
 			
 			echo "<br/><p><strong>Contenu : </strong></p><br/>";
 			
-			echo "<table>";
+			echo "<table class='tabD'>";
 			echo "<tr>";
 			
 			for($z=0; $z<$nbCol ; $z++)
@@ -44,22 +45,25 @@
 			echo "</table>";
 			
 			echo "<br/><p><strong>Script : </strong></p><br/>";
-			echo "<p>CREATE TABLE " . $nomTable . "</p>";
-			echo "<p>(</p>";
+			
+			$test = "";
+
 			for($z=0; $z<$nbCol ; $z++)
 			{
 				if($z == $nbCol-1)
 				{
-					echo "<p>" . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . ")</p>";
+					$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . ")\n";
 				}
 				else
 				{
-					echo "<p>" . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . "),</p>";
+					$test = $test . $nomCol[$z] . " " . $typeCol[$z] . "(" . $tailleCol[$z] . "),\n\t";
 				}
-				
-			}
-			echo "<p>);</p>";
-			echo "<a href='index.php?section=database&action=show&dbid=" . $_SESSION['dbid'] . "'>Retour</a>"
+			};
+			
+			
+			echo "<textarea rows='15' cols='50' wrap='on'>
+CREATE TABLE " . $nomTable . "\n(\n\t" . $test . " );
+			</textarea>";
 		?>
 	</div>
 </section>
